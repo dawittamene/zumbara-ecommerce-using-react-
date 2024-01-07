@@ -68,11 +68,11 @@ const Products = () => {
                 data-aos="fade-up"
                 className=' text-3xl font-bold font-[poppins]'>Products</h1>
                 <p
-                data-aos="fade-up"
-                 className=' text-xs text-gray-400'>
+                    data-aos="fade-up" className=' text-xs text-gray-400'>
                     Lorem ipsum dolor sit amet, consectetur
                     adipisicing elit. Nihil enim adipisci deleniti?
                 </p>
+                
             </div>
 
 
