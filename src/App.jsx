@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import Navbar from "./Components/Navbar/Navbar"
+import Hero from "./Components/Hero/Hero";
 
 function App() {
   const [theme, setTheme] = useState(
@@ -20,6 +21,7 @@ function App() {
     <>
       <div>
         <Navbar theme={theme} setTheme={setTheme} />
+        <Hero />
       </div>
     </>
   )

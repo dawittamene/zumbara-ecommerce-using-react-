@@ -92,7 +92,7 @@ const Navbar = ({theme, setTheme}) => {
                     "not work know"
                 )}
                 className=' bg-gradient-to-r from-primary to-secondary text-white px-4 py-1
-                 rounded-full transition-all duration-200 flex items-center gap-3 group '
+                 rounded-full transition-all duration-200 sm:flex items-center gap-3 group hidden'
                 >
                     <span
                     
