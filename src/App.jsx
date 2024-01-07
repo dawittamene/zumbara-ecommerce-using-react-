@@ -5,6 +5,7 @@ import Products from "./Components/Products/Products";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import TopProducts from "./Components/TopProducts/TopProducts";
+import Banner from "./Components/Banner/Banner";
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
         <Hero />
         <Products />
         <TopProducts />
+        <Banner />
       </div>
     </>
   )
