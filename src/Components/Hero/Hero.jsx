@@ -68,11 +68,26 @@ const Hero = () => {
                     {/* text section */}
 
                     <div className=' flex flex-col justify-center pt-12 sm:pt-0 sm:text-left text-center gap-4 order-2 sm:order-1 relative z-10'>
-                    <h1 className=' text-5xl sm:text-6xl lg:text-7xl font-bold font-[poppins]'>{data.title}</h1>
-                        <p className=' text-sm'>
-                            {data.discrption}
+                    <h1 
+                    data-aos='zoom-out'
+                    data-aos-once='true'
+                    data-aos-duration='500'
+                    className=' text-5xl sm:text-6xl lg:text-7xl font-bold font-[poppins]'>
+                        {data.title}
+                        </h1>
+                        <p 
+                        data-aos='fade-up'
+                        data-aos-delay='100'
+                        data-aos-duration='500'
+                        className=' text-sm'>
+                        {data.discrption}
                         </p>
-                        <div>
+                        <div
+                        data-aos='fade-up'
+                        data-aos-delay='300'
+                        data-aos-duration='500'
+                        
+                        >
                             <button
                             className=' bg-gradient-to-r from-primary to-secondary
                             text-white py-2 px-4 hover:scale-105 duration-200 rounded-full'
@@ -82,8 +97,13 @@ const Hero = () => {
                         </div>
                     </div>
                     {/* Image section */}
-                    <div className=' order-1 sm:order-2 relative z-10'> 
-                        <div>
+                    <div className=' order-1 sm:order-2'> 
+                        <div
+                        data-aos='zoom-out'
+                        data-aos-once='true'
+                        className=' relative z-10'
+
+                        >
                             <img src={data.image} alt="image1" 
                             className=' w-[300px] h-[300px] sm:w-[300px] sm:h-[300px] sm:scale-125 lg:scale-125 object-contain mx-auto'
                             />
