@@ -43,6 +43,8 @@ function App() {
         <TopProducts />
         <Banner />
         <Subscribe />
+        <Products />
+
       </div>
     </>
   )

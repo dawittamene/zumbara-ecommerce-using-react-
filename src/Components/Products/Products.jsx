@@ -100,13 +100,15 @@ const Products = () => {
                                         </div>
                                     </div>
                                 </div>
-                            ))
-                        }
-                    
-
+                            ))}
+                </div>
+                {/* view product button */}
+                <div className=' flex justify-center'>
+                    <button className=' text-center mt-10 cursor-pointer bg-primary text-white rounded-md py-1 px-4'>
+                        View All Product
+                    </button>
                 </div>
             </div>
-
         </div>
     </div>
   )
