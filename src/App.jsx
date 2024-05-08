@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import Navbar from "./Components/Navbar/Navbar";
 import Hero from "./Components/Hero/Hero";
 import Products from "./Components/Products/Products";
@@ -39,8 +41,11 @@ function App() {
   return (
     <>
       <div>
-        <Navbar theme={theme} setTheme={setTheme} />
-        <Hero />
+        
+
+      <Router>
+      <Navbar theme={theme} setTheme={setTheme}/>
+      <Hero />
         <Products />
         <TopProducts />
         <Banner />
@@ -48,6 +53,16 @@ function App() {
         <Products />
         <Testimonials />
         <Footer />
+      
+
+      <Routes>
+        
+
+
+
+
+      </Routes>
+    </Router>
 
       </div>
     </>
