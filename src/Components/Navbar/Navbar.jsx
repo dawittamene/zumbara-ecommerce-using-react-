@@ -122,9 +122,7 @@ const Navbar = ({ theme, setTheme }) => {
                     <li>
                         <Link to="/" className='inline-block px-4 hover:text-primary duration-200'>Home</Link>
                     </li>
-                    <li>
-                        <Link to="/toprated" className='inline-block px-4 hover:text-primary duration-200'>Top Rated</Link>
-                    </li>
+                    
                     <li>
                         <Link to="/kidswear" className='inline-block px-4 hover:text-primary duration-200'>Kids Wear</Link>
                     </li>
@@ -137,6 +135,9 @@ const Navbar = ({ theme, setTheme }) => {
                     <li>
                         <Link to="/electronics" className='inline-block px-4 hover:text-primary duration-200'>Electronics</Link>
                     </li>
+                    <li>
+                        <Link to="/categories" className='inline-block px-4 hover:text-primary duration-200'>Categories</Link>
+                    </li>
                     {/* simple drop down  */}
                     <li className='relative group cursor-pointer'>
                         <a href="/" className='flex items-center gap-[2px] py-2'>
@@ -147,11 +148,13 @@ const Navbar = ({ theme, setTheme }) => {
                         </a>
                         <div className='absolute z-[9999] hidden group-hover:block p-2 w-[150px] rounded-md text-black shadow-md bg-white'>
                             <ul>
-                                {DropdownMenu.map((data) => (
-                                    <li key={data.id}>
-                                        <a href={data.link} className='inline-block w-full p-2 rounded-md hover:bg-primary/20'>{data.name}</a>
-                                    </li>
-                                ))}
+                            <li>
+                                <Link to="/bestSelling" className='inline-block px-4 hover:text-primary duration-200'>Best Selling</Link>
+                            </li>   
+                            <li>
+                                <Link to="/toprated" className='inline-block px-4 hover:text-primary duration-200'>Top Rated</Link>
+                            </li> 
+                             
                             </ul>
                         </div>
                     </li>

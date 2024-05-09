@@ -6,18 +6,18 @@ import Navbar from "./Components/Navbar/Navbar";
 import Products from "./Components/Products/Products";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import TopProducts from "./Components/TopProducts/TopProducts";
-import Banner from "./Components/Banner/Banner";
-import Subscribe from "./Components/Subscribe/Subscribe";
-import Testimonials from "./Components/Testimonials/Testimonials";
-import Footer from "./Components/Footer/Footer"
+
 import Menwear from "./Pages/Menwear";
 import Home from "./Pages/Home";
 import Toprated from "./Pages/Toprated";
 import Kidswear from "./Pages/Kidswear";
 import WomenWear from "./Pages/WomenWear";
 import Electronics from "./Pages/Electronics";
-import AllProduct from "./Pages/AllProduct";
+import AllProduct from "./Pages/AllProduct/AllProduct";
+import BestSelling from "./Pages/BestSelling";
+import Category from "./Pages/AllProduct/Category";
+import CategoryProduct from "./Pages/AllProduct/CategoryProduct";
+import ProductDetail from "./Pages/AllProduct/ProductDetail";
 
 
 
@@ -63,15 +63,11 @@ function App() {
         <Route path="/womenwear" element={<WomenWear/>} />
         <Route path="/electronics" element={<Electronics/>} />
         <Route path="/allProduct" element={<AllProduct/>} />
+        <Route path="/bestSelling" element={<BestSelling/>} />
+        <Route path="/categories" element={<Category/>} />
+        <Route path="/categoriesProduct/:category_slug/:categoryId" element={<CategoryProduct/>} />
+        <Route path="/product-detail/:product_slug/:productId" element={<ProductDetail/>} />
 
-
-
-
-
-        
-
-
-        
 
 
 
