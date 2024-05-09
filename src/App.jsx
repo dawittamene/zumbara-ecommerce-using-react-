@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
 import Navbar from "./Components/Navbar/Navbar";
-import Hero from "./Components/Hero/Hero";
 import Products from "./Components/Products/Products";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -16,9 +15,10 @@ import Menwear from "./Pages/Menwear";
 import Home from "./Pages/Home";
 import Toprated from "./Pages/Toprated";
 import Kidswear from "./Pages/Kidswear";
-// import Men_Wear from "./Pages/Men_Wear";
-// import Top_Rated from "./Pages/Top_Rated";
-// import Kids_Wear from "./Pages/Kids_Wear";
+import WomenWear from "./Pages/WomenWear";
+import Electronics from "./Pages/Electronics";
+import AllProduct from "./Pages/AllProduct";
+
 
 
 function App() {
@@ -56,15 +56,19 @@ function App() {
       
         
       <Routes>
-      {/* <Route path="/" element={<Home />} /> */}
       <Route path="/" element={<Home />}></Route>
         <Route path="/menswear" element={<Menwear/>} />
         <Route path="/toprated" element={<Toprated/>} />
         <Route path="/kidswear" element={<Kidswear/>} />
+        <Route path="/womenwear" element={<WomenWear/>} />
+        <Route path="/electronics" element={<Electronics/>} />
+        <Route path="/allProduct" element={<AllProduct/>} />
 
 
-        {/* <Route path="/toprated" element={<Top_Rated />} />
-        <Route path="/kidswear" element={<Kids_Wear />} /> */}
+
+
+
+        
 
 
         

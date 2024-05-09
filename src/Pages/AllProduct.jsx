@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import Image1 from '../../assets/women/women.png';
-import Image2 from '../../assets/women/women2.jpg';
-import Image3 from '../../assets/women/women3.jpg';
-import Image4 from '../../assets/women/women4.jpg';
+import Image1 from '../assets/women/women.png';
+import Image2 from '../assets/women/women2.jpg';
+import Image3 from '../assets/women/women3.jpg';
+import Image4 from '../assets/women/women4.jpg';
 import { FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
@@ -51,7 +51,7 @@ const ProductData = [
   },
 ];
 
-const Products = () => {
+const AllProduct = () => {
   useEffect(() => {
     AOS.init({
       offset: 100,
@@ -112,4 +112,4 @@ const Products = () => {
   )
 }
 
-export default Products;
+export default AllProduct;
