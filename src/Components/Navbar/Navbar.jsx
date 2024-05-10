@@ -4,6 +4,7 @@ import { GiShoppingCart } from "react-icons/gi";
 import { IoSunny } from "react-icons/io5";
 import { IoIosMoon } from "react-icons/io";
 import { FaSortDown } from "react-icons/fa";
+// import { FaCartPlus } from "react-icons/fa6";
 import Logo from '../../assets/logo.png'
 import { Link } from 'react-router-dom';
 
@@ -145,7 +146,9 @@ const Navbar = ({ theme, setTheme }) => {
                             <span className='group'>
                                 <FaSortDown className='transition-all duration-200 group-hover:rotate-180' />
                             </span>
+                            
                         </a>
+                        
                         <div className='absolute z-[9999] hidden group-hover:block p-2 w-[150px] rounded-md text-black shadow-md bg-white'>
                             <ul>
                             <li>
@@ -158,6 +161,12 @@ const Navbar = ({ theme, setTheme }) => {
                             </ul>
                         </div>
                     </li>
+                    <li>
+                        <Link to="/cart-page" className='inline-block px-4 hover:text-primary duration-200'>
+                            <GiShoppingCart className='text-4xl dark:text-white text-gray-900 drop-shadow-sm cursor-pointer' />
+
+                        </Link>
+                    </li> 
                 </ul>
             </div>
         </div>
