@@ -18,6 +18,9 @@ import BestSelling from "./Pages/BestSelling";
 import Category from "./Pages/AllProduct/Category";
 import CategoryProduct from "./Pages/AllProduct/CategoryProduct";
 import ProductDetail from "./Pages/AllProduct/ProductDetail";
+import CheckoutPage from "./Pages/AllProduct/Checkout";
+import Cart from "./Pages/AllProduct/Cart";
+import Wishlist from "./Pages/AllProduct/Wishlist";
 
 
 
@@ -66,7 +69,12 @@ function App() {
         <Route path="/bestSelling" element={<BestSelling/>} />
         <Route path="/categories" element={<Category/>} />
         <Route path="/categoriesProduct/:category_slug/:categoryId" element={<CategoryProduct/>} />
-        <Route path="/product-detail/:product_slug/:productId" element={<ProductDetail/>} />
+        <Route path="/product-detail/:product_slug/:productId" element={<ProductDetail/>}/>
+        <Route path="/cart-page" element={<Cart/>}/>
+        <Route path="/checkout-page" element={<CheckoutPage/>}/>
+        <Route path="/wishlist-page" element={<Wishlist/>}/>
+
+
 
 
 
