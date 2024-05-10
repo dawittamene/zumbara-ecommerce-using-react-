@@ -162,10 +162,13 @@ const Navbar = ({ theme, setTheme }) => {
                         </div>
                     </li>
                     <li>
-                        <Link to="/cart-page" className='inline-block px-4 hover:text-primary duration-200'>
-                            <GiShoppingCart className='text-4xl dark:text-white text-gray-900 drop-shadow-sm cursor-pointer' />
+                    <Link to="/cart-page" className='inline-block px-4 hover:text-primary duration-200 relative'>
+                    {/* Display cart item count */}
+                    <span className='absolute -top-2 -right-2 bg-primary text-white px-2 py-1 rounded-full'>5</span>
 
-                        </Link>
+                    {/* Cart icon */}
+                    <GiShoppingCart className='text-4xl dark:text-white text-gray-900 drop-shadow-sm cursor-pointer' />
+                    </Link>
                     </li> 
                 </ul>
             </div>
