@@ -3,16 +3,13 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
 import Navbar from "./Components/Navbar/Navbar";
-import Products from "./Components/Products/Products";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-import Menwear from "./Pages/Menwear";
+
 import Home from "./Pages/Home";
 import Toprated from "./Pages/Toprated";
-import Kidswear from "./Pages/Kidswear";
-import WomenWear from "./Pages/WomenWear";
-import Electronics from "./Pages/Electronics";
+
 import AllProduct from "./Pages/AllProduct/AllProduct";
 import BestSelling from "./Pages/BestSelling";
 import Category from "./Pages/AllProduct/Category";
@@ -21,6 +18,9 @@ import ProductDetail from "./Pages/AllProduct/ProductDetail";
 import CheckoutPage from "./Pages/AllProduct/Checkout";
 import Cart from "./Pages/AllProduct/Cart";
 import Wishlist from "./Pages/AllProduct/Wishlist";
+import Register from "./Customer/Register";
+import Login from "./Customer/Login";
+import Dashbord from "./Customer/Dashbord";
 
 
 
@@ -60,11 +60,10 @@ function App() {
         
       <Routes>
       <Route path="/" element={<Home />}></Route>
-        <Route path="/menswear" element={<Menwear/>} />
+        <Route path="/customer-register" element={<Register/>} />
+        <Route path="/customer-login" element={<Login/>} />
+        <Route path="/customer-dashbord" element={<Dashbord/>} />
         <Route path="/toprated" element={<Toprated/>} />
-        <Route path="/kidswear" element={<Kidswear/>} />
-        <Route path="/womenwear" element={<WomenWear/>} />
-        <Route path="/electronics" element={<Electronics/>} />
         <Route path="/allProduct" element={<AllProduct/>} />
         <Route path="/bestSelling" element={<BestSelling/>} />
         <Route path="/categories" element={<Category/>} />

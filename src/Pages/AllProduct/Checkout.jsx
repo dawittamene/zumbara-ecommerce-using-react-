@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Checkout = () => {
   return (
@@ -27,7 +28,7 @@ const Checkout = () => {
               <label htmlFor="zipcode" className="block text-gray-800 font-bold mb-2">Zip Code</label>
               <input type="text" id="zipcode" name="zipcode" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 transition-all duration-300 placeholder-gray-500 placeholder-opacity-50" placeholder="Enter your zip code" />
             </div>
-            <button type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg shadow-md hover:bg-blue-600 transition duration-300">Proceed to Payment</button>
+            <Link to='/'  className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg shadow-md hover:bg-blue-600 transition duration-300">Proceed to Payment</Link>
           </form>
         </div>
       </div>

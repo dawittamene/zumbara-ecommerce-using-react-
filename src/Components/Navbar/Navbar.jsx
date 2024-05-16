@@ -124,17 +124,32 @@ const Navbar = ({ theme, setTheme }) => {
                         <Link to="/" className='inline-block px-4 hover:text-primary duration-200'>Home</Link>
                     </li>
                     
-                    <li>
-                        <Link to="/kidswear" className='inline-block px-4 hover:text-primary duration-200'>Kids Wear</Link>
-                    </li>
-                    <li>
-                        <Link to="/menswear" className='inline-block px-4 hover:text-primary duration-200'>Mens Wear</Link>
-                    </li>
-                    <li>
-                        <Link to="/womenwear" className='inline-block px-4 hover:text-primary duration-200'>Women Wear</Link>
-                    </li>
-                    <li>
-                        <Link to="/electronics" className='inline-block px-4 hover:text-primary duration-200'>Electronics</Link>
+                    <li className='relative group cursor-pointer'>
+                        <a href="/" className='flex items-center gap-[2px] py-2'>
+                            My Account
+                            <span className='group'>
+                                <FaSortDown className='transition-all duration-200 group-hover:rotate-180' />
+                            </span>
+                            
+                        </a>
+                        
+                        <div className='absolute z-[9999] hidden group-hover:block p-2 w-[150px] rounded-md text-black shadow-md bg-white'>
+                            <ul>
+                            <li>
+                                <Link to="/customer-register" className='inline-block px-4 hover:text-primary duration-200'>Register</Link>
+                            </li>   
+                            <li>
+                                <Link to="/customer-login" className='inline-block px-4 hover:text-primary duration-200'>Login</Link>
+                            </li> 
+
+                            <li>
+                                <Link to="/customer-login" className='inline-block px-4 hover:text-primary duration-200'>Logout</Link>
+                            </li> 
+                            <li>
+                                <Link to="/customer-dashbord" className='inline-block px-4 hover:text-primary duration-200'>Dashbord</Link>
+                            </li> 
+                            </ul>
+                        </div>
                     </li>
                     <li>
                         <Link to="/categories" className='inline-block px-4 hover:text-primary duration-200'>Categories</Link>
