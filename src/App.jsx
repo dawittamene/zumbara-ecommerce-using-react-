@@ -17,7 +17,7 @@ import CategoryProduct from "./Pages/AllProduct/CategoryProduct";
 import ProductDetail from "./Pages/AllProduct/ProductDetail";
 import CheckoutPage from "./Pages/AllProduct/Checkout";
 import Cart from "./Pages/AllProduct/Cart";
-import Wishlist from "./Pages/AllProduct/Wishlist";
+import Wishlist from "./Customer/Wishlist";
 import Register from "./Customer/Register";
 import Login from "./Customer/Login";
 import Dashbord from "./Customer/Dashboard";
@@ -65,6 +65,7 @@ function App() {
         <Route path="/customer-login" element={<Login/>} />
         <Route path="/customer-dashbord" element={<Dashbord/>} />
         <Route path="/customer-orders" element={<Orders/>} />
+
 
         <Route path="/toprated" element={<Toprated/>} />
         <Route path="/allProduct" element={<AllProduct/>} />
