@@ -21,6 +21,7 @@ import Wishlist from "./Pages/AllProduct/Wishlist";
 import Register from "./Customer/Register";
 import Login from "./Customer/Login";
 import Dashbord from "./Customer/Dashboard";
+import Orders from "./Customer/Orders";
 
 
 
@@ -63,6 +64,8 @@ function App() {
         <Route path="/customer-register" element={<Register/>} />
         <Route path="/customer-login" element={<Login/>} />
         <Route path="/customer-dashbord" element={<Dashbord/>} />
+        <Route path="/customer-orders" element={<Orders/>} />
+
         <Route path="/toprated" element={<Toprated/>} />
         <Route path="/allProduct" element={<AllProduct/>} />
         <Route path="/bestSelling" element={<BestSelling/>} />
@@ -79,7 +82,11 @@ function App() {
 
 
 
+
+
+
       </Routes>
+
     </Router>
 
       </div>
