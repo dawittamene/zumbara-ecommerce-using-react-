@@ -125,7 +125,7 @@ const Navbar = ({ theme, setTheme }) => {
                     </li>
                     
                     <li className='relative group cursor-pointer'>
-                        <a href="/" className='flex items-center gap-[2px] py-2'>
+                        <a  className='flex items-center gap-[2px] py-2'>
                             My Account
                             <span className='group'>
                                 <FaSortDown className='transition-all duration-200 group-hover:rotate-180' />
@@ -156,7 +156,7 @@ const Navbar = ({ theme, setTheme }) => {
                     </li>
                     {/* simple drop down  */}
                     <li className='relative group cursor-pointer'>
-                        <a href="/" className='flex items-center gap-[2px] py-2'>
+                        <a  className='flex items-center gap-[2px] py-2'>
                             Trending Products
                             <span className='group'>
                                 <FaSortDown className='transition-all duration-200 group-hover:rotate-180' />

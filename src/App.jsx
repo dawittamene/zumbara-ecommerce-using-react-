@@ -20,7 +20,7 @@ import Cart from "./Pages/AllProduct/Cart";
 import Wishlist from "./Pages/AllProduct/Wishlist";
 import Register from "./Customer/Register";
 import Login from "./Customer/Login";
-import Dashbord from "./Customer/Dashbord";
+import Dashbord from "./Customer/Dashboard";
 
 
 
