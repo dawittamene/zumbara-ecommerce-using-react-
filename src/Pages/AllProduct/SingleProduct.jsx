@@ -30,12 +30,12 @@ const SingleProduct = (props) => {
           {/* Body section */}
           <div className='mt-14 mb-12'>
               <div  data-aos="fade-up" className='space-y-3'>
-              <Link to="/product-detail/women-t-shirt/1">
+              <Link to={`/allProduct/product/${props.product.slug}/${props.product.id}`}>
                   <img src={Image1} alt="" className='h-[220px] w-[150px] object-cover rounded-md' />
                </Link>   
                 <div>
-                  <Link to="/product-detail/women-t-shirt/1"><h3 className='font-semibold'>{props.title}</h3></Link>
-                  <p className='text-sm text-gray-500'>{props.price}</p>
+                  <Link to={`product/${props.product.slug}/${props.product.id}`}><h3 className='font-semibold'>{props.product.name}</h3></Link>
+                  <p className='text-sm text-gray-500'>{props.product.price}</p>
                   <div className='flex items-center gap-1'>
                     <FaStar className='text-yellow-400' />
                     <span>5.0</span>

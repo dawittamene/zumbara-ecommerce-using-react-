@@ -4,9 +4,9 @@ import 'aos/dist/aos.css';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import SingleProduct from './SingleProduct';
 
-const CategoryProduct = () => {
+const TagProduct = () => {
   const navigate = useNavigate();
-  const { categoryId, category_slug } = useParams();
+  const { tag } = useParams(); // Destructure to get the tag parameter
 
   useEffect(() => {
     AOS.init({
@@ -22,33 +22,34 @@ const CategoryProduct = () => {
   const [offset, setOffset] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
   const limit = 2; // Number of items per page
-  const baseUrl = categoryId ? `http://127.0.0.1:8000/api/products/?category=${categoryId}` : 'http://127.0.0.1:8000/api/products/';
+  const baseUrl = 'http://127.0.0.1:8000/api';
 
   useEffect(() => {
-    fetchData(baseUrl, offset, limit);
-  }, [categoryId, offset]);
+    if (tag) {
+      fetchData(`${baseUrl}/products/${tag}/`, offset, limit);
+    }
+  }, [tag, offset]); // Include tag in the dependency array
 
-  const fetchData = (url, offset, limit) => {
-    fetch(`${url}&limit=${limit}&offset=${offset}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setProducts(data.results);
-        setTotalCount(data.count);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-        // Handle error state here
-      });
+  const fetchData = async (url, offset, limit) => {
+    console.log('Fetching data from URL:', url);
+    try {
+      const response = await fetch(`${url}?limit=${limit}&offset=${offset}`);
+      console.log('API Response:', response);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log('Data received:', data);
+      setProducts(data.results);
+      setTotalCount(data.count);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
   };
 
   const handlePageClick = (newOffset, page) => {
     setOffset(newOffset);
-    navigate(`/category/${categoryId}/${category_slug}/?page=${page}`);
+    navigate(`/products/${tag}`);
   };
 
   const totalPages = Math.ceil(totalCount / limit);
@@ -73,24 +74,38 @@ const CategoryProduct = () => {
         </h1>
       </div>
       <div className='mt-14 mb-12'>
-        
+        <div className='container flex flex-wrap'>
+          {/* Side Filter */}
+          <div className="w-full md:w-1/4 pr-8 mb-6 md:mb-0">
+            <h2 className="text-lg font-semibold mb-4">Filters</h2>
+            <div className="border p-4 mb-4 rounded-md">
+              <Link to="/"><h3 className="font-semibold mb-2">Price Range</h3></Link>
+            </div>
+            <div className="border p-4 rounded-md">
+              <Link to="/categories"><h3 className="font-semibold mb-2">Category</h3></Link>
+            </div>
+          </div>
           {/* Product Listing */}
           <div className='w-full md:w-3/4'>
             <div className='text-center max-w-[600px] mx-auto mb-10'>
-              {/* Add any additional content here */}
             </div>
             <div className='grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 place-items-center gap-5'>
-              {products.map((product) => (
-                <SingleProduct product={product} />
-              ))}
+              {products.length > 0 ? (
+                products.map((product) => (
+                  <SingleProduct key={product.id} product={product} />
+                ))
+              ) : (
+                <p>No products found.</p>
+              )}
             </div>
             <div className="flex justify-center mt-10">
               {paginationLinks}
             </div>
           </div>
         </div>
+      </div>
     </>
   );
 }
 
-export default CategoryProduct;
+export default TagProduct;

@@ -4,7 +4,7 @@ import 'aos/dist/aos.css';
 import { Link, useNavigate } from 'react-router-dom';
 import SingleProduct from './SingleProduct';
 
-const AllProduct = () => {
+const AllProduct = (props) => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -80,7 +80,7 @@ const AllProduct = () => {
             </div>
             <div className='grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 place-items-center gap-5'>
               {products.map((product) => (
-                <SingleProduct key={product.id} title={product.name} price={product.price} />
+                <SingleProduct product={product} />
               ))}
             </div>
             <div className="flex justify-center mt-10">
