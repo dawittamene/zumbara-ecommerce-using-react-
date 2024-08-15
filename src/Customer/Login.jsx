@@ -1,23 +1,49 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import axios from 'axios';
 
 const Login = () => {
+  const baseUrl = 'http://127.0.0.1:8000/api/';
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [formError, setformError] = useState(false);
+  const [errorMsg, seterrorMsg] = useState('');
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.post(`${baseUrl}customer/login/`, {
+      email: email,
+      password: password,
+    })
+    .then(function (response) {
+      console.log(response);
+      if (response.data.bool === false){
+        setformError(true);
+        seterrorMsg(response.data.msg);
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  };
+
+  console.log(formError, errorMsg);
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900 dark:text-white">Sign in to your account</h2>
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900 dark:text-white">
+            Sign in to your account
+          </h2>
         </div>
-        <form className="mt-8 space-y-6">    
-          {/* onSubmit={handleSubmit} */}
+        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>    
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
               <label htmlFor="email" className="sr-only">Email address</label>
@@ -26,8 +52,10 @@ const Login = () => {
                 name="email"
                 type="email"
                 autoComplete="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border dark:border-gray-300 border-gray-900 placeholder-gray-500 text-gray-900 dark:text-gray-300 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border dark:border-gray-300 border-gray-900 placeholder-gray-500 text-gray-900 dark:text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Email address"
               />
             </div>
@@ -41,7 +69,7 @@ const Login = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border dark:border-gray-300 border-gray-900 placeholder-gray-500 text-gray-900 dark:text-gray-300 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border dark:border-gray-300 border-gray-900 placeholder-gray-500 text-gray-900 dark:text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Password"
               />
               <div className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
@@ -68,9 +96,14 @@ const Login = () => {
               Sign in
             </button>
           </div>
+          {!formError && (
+            <p className="text-red-900">
+              {errorMsg}
+            </p>
+          )}
         </form>
         <div className="text-sm text-center">
-          <p className='dark:text-gray-50 text-gray-900'>
+          <p className="dark:text-gray-50 text-gray-900">
             Don't have an account?{' '}
             <Link to="/customer-register" className="font-medium text-lg text-indigo-600 hover:text-indigo-500">
               Register

@@ -1,32 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams, useLocation } from 'react-router-dom';
 import SingleProduct from './SingleProduct';
 
 const CategoryProduct = () => {
   const navigate = useNavigate();
   const { categoryId, category_slug } = useParams();
+  const location = useLocation();
+
+  const [products, setProducts] = useState([]);
+  const [offset, setOffset] = useState(0);
+  const [totalCount, setTotalCount] = useState(0);
+
+  const limit = 8; // Number of items per page
+  const baseUrl = categoryId
+    ? `http://127.0.0.1:8000/api/products/?category=${categoryId}`
+    : 'http://127.0.0.1:8000/api/products/';
 
   useEffect(() => {
     AOS.init({
       offset: 100,
       duration: 800,
-      easing: "ease-in-sine",
+      easing: 'ease-in-sine',
       delay: 100
     });
     AOS.refresh();
   }, []);
 
-  const [products, setProducts] = useState([]);
-  const [offset, setOffset] = useState(0);
-  const [totalCount, setTotalCount] = useState(0);
-  const limit = 2; // Number of items per page
-  const baseUrl = categoryId ? `http://127.0.0.1:8000/api/products/?category=${categoryId}` : 'http://127.0.0.1:8000/api/products/';
-
   useEffect(() => {
-    fetchData(baseUrl, offset, limit);
-  }, [categoryId, offset]);
+    const queryParams = new URLSearchParams(location.search);
+    const currentPage = parseInt(queryParams.get('page')) || 1;
+    const currentOffset = (currentPage - 1) * limit;
+    setOffset(currentOffset);
+    fetchData(baseUrl, currentOffset, limit);
+  }, [categoryId, location.search]);
 
   const fetchData = (url, offset, limit) => {
     fetch(`${url}&limit=${limit}&offset=${offset}`)
@@ -46,9 +54,8 @@ const CategoryProduct = () => {
       });
   };
 
-  const handlePageClick = (newOffset, page) => {
-    setOffset(newOffset);
-    navigate(`/category/${categoryId}/${category_slug}/?page=${page}`);
+  const handlePageClick = (newPage) => {
+    navigate(`/category/${categoryId}/${category_slug}/?page=${newPage}`);
   };
 
   const totalPages = Math.ceil(totalCount / limit);
@@ -58,7 +65,7 @@ const CategoryProduct = () => {
       <button
         key={i}
         className={`px-4 py-2 mx-1 ${offset / limit === i ? 'bg-secondary' : 'bg-primary'} text-white rounded-md`}
-        onClick={() => handlePageClick(i * limit, i + 1)}
+        onClick={() => handlePageClick(i + 1)}
       >
         {i + 1}
       </button>
@@ -73,24 +80,22 @@ const CategoryProduct = () => {
         </h1>
       </div>
       <div className='mt-14 mb-12'>
-        
-          {/* Product Listing */}
-          <div className='w-full md:w-3/4'>
-            <div className='text-center max-w-[600px] mx-auto mb-10'>
-              {/* Add any additional content here */}
-            </div>
-            <div className='grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 place-items-center gap-5'>
-              {products.map((product) => (
-                <SingleProduct product={product} />
-              ))}
-            </div>
-            <div className="flex justify-center mt-10">
-              {paginationLinks}
-            </div>
+        <div className='w-full md:w-3/4'>
+          <div className='text-center max-w-[600px] mx-auto mb-10'>
+            {/* Add any additional content here */}
+          </div>
+          <div className='grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 place-items-center gap-5'>
+            {products.map((product) => (
+              <SingleProduct key={product.id} product={product} />
+            ))}
+          </div>
+          <div className="flex justify-center mt-10">
+            {paginationLinks}
           </div>
         </div>
+      </div>
     </>
   );
-}
+};
 
 export default CategoryProduct;
